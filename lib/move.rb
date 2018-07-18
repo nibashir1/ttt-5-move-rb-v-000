@@ -46,7 +46,7 @@ def turn(board)
 end
 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
- 
+
 puts "Welcome to Tic Tac Toe!"
 
 move(board, 4, "O")
