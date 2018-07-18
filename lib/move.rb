@@ -8,26 +8,52 @@ end
 
 # code your input_to_index and move method here!
 
-def input_to_index(input)
-  return index =input.to_i - 1
+def input_to_index(string)
+  return string.to_i - 1
+end
+
+def position_taken?(array, index)
+  if (array[index] == " " || array[index] == "" || array[index] == nil)
+    return false
+  else
+    return true
+  end
+end
+
+def valid_move?(array, index)
+  if (index < 0 || index > 8)
+    return false
+  elsif position_taken?(array, index)
+    return false
+  else
+    return true
+  end
+end
+
+def move(array, index, char = "X")
+  if ( valid_move?(array, index) )
+    array[index] = char
+    return array
+  else
+    #do nothing
+  end
 end
 
 def turn(board)
   puts "Please enter 1-9:"
-  #get the user input
-  user_input = gets.strip
-  #input to index
-  index = input_to_index(user_input)
-  token = current_player(board)
-
-  #check for validation
-  if valid_move?(board,index)
-    puts 'valid move'
-    move(board, index, token)
-    display_board(board)
-   else
-    puts 'try again'
-    turn(board)
-  end
-  display_board(board)
+  input = gets.strip
+  puts input
 end
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+ 
+puts "Welcome to Tic Tac Toe!"
+
+move(board, 4, "O")
+move(board, 4, "X")
+move(board, 5, "X")
+move(board, 5, "O")
+
+display_board(board)
+
+turn(board)
